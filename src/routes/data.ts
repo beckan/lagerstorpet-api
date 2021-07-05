@@ -11,7 +11,10 @@ export default [
 
       res.send({
         status: "ok",
-        data: await Device.find({}).populate("device"),
+        data: await Device.find({})
+          .sort({ date: "desc" })
+          .limit(100)
+          .populate("device"),
       });
     },
   },
@@ -25,6 +28,7 @@ export default [
         status: "ok",
         data: await Device.find({ device: req.params.deviceId })
           .sort({ date: "desc" })
+          .limit(100)
           .populate("device"),
       });
     },

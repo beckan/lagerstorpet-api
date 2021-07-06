@@ -37,19 +37,23 @@ export default [
     path: "/data",
     method: "post",
     async callback(req: Request, res: Response) {
-      const Device = mongoose.model("Data");
-      const data = req.body;
-      data.date = new Date();
+      res.send({
+        status: "ok",
+      });
 
-      try {
-        await Device.create(data);
+      // const Device = mongoose.model("Data");
+      // const data = req.body;
+      // data.date = new Date();
 
-        res.send({
-          status: "ok",
-        });
-      } catch (error) {
-        handleRouteError(error, res);
-      }
+      // try {
+      //   await Device.create(data);
+
+      //   res.send({
+      //     status: "ok",
+      //   });
+      // } catch (error) {
+      //   handleRouteError(error, res);
+      // }
     },
   },
   {
